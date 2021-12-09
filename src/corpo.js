@@ -1,6 +1,12 @@
+import {BuildPost} from './buildpost';
+import {BuildSuggestion} from './buildsuggestion';
+import {BuildStory} from './buildstory';
+
+
+
 export default function Corpo()
 {
-    let Stories = [
+    let stories = [
     {
         image: "assets/img/9gag.svg",
         name: "9gag"
@@ -35,7 +41,7 @@ export default function Corpo()
     }
     ];
 
-    let Posts = [
+    let posts = [
     {
         pfp: "assets/img/meowed.svg",
         username: "meowed",
@@ -54,7 +60,7 @@ export default function Corpo()
     }
     ];
 
-    let Suggestions = [
+    let suggestions = [
     {
         pfp: "assets/img/bad.vibes.memes.svg",
         username: "bad.vibes.memes",
@@ -82,7 +88,7 @@ export default function Corpo()
     }
     ];
 
-    let User = {
+    let user = {
         pfp: "assets/img/catanacomics.svg",
         name: "catanacomics",
         subname: "Catana",
@@ -94,7 +100,7 @@ export default function Corpo()
             <div class="stories">
 
                 <ul>
-			            {Stories.map(story => <Storia image={story.image} name={story.name}/>)}
+			            {stories.map(story => <BuildStory image={story.image} name={story.name}/>)}
 		            </ul>
 
             <div class="setinha">
@@ -105,17 +111,17 @@ export default function Corpo()
           <div class="posts">
 
             <ul>
-			        {Posts.map(Post => <Posta pfp={Post.pfp} username={Post.username} postimg={Post.postimg} likesimg={Post.likesimg} likesname={Post.likesname} likesothers={Post.likesothers}/>)}
+			        {posts.map(post => <BuildPost pfp={post.pfp} username={post.username} postimg={post.postimg} likesimg={post.likesimg} likesname={post.likesname} likesothers={post.likesothers}/>)}
 		        </ul>
           </div>
         </div>
 
         <div class="sidebar">
           <div class="usuario">
-            <img src={User.pfp} />
+            <img src={user.pfp} />
             <div class="texto">
-              <strong>{User.name}</strong>
-              {User.subname}
+              <strong>{user.name}</strong>
+              {user.subname}
             </div>
           </div>
 
@@ -126,7 +132,7 @@ export default function Corpo()
             </div>
 
             <ul>
-			        {Suggestions.map(suggestion => <Sugere pfp={suggestion.pfp} username={suggestion.username} reason={suggestion.reason}/>)}
+			        {suggestions.map(suggestion => <BuildSuggestion pfp={suggestion.pfp} username={suggestion.username} reason={suggestion.reason}/>)}
 		        </ul>
 
           </div>
@@ -143,76 +149,3 @@ export default function Corpo()
     );
 }
 
-function Posta(props)
-{
-  return(
-  <li>{
-    <div class="post">
-    <div class="topo">
-      <div class="usuario">
-        <img src= {props.pfp} />
-        {props.username}
-      </div>
-      <div class="acoes">
-        <ion-icon name="ellipsis-horizontal"></ion-icon>
-      </div>
-    </div>
-
-    <div class="conteudo">
-      <img src={props.postimg}/>
-    </div>
-
-    <div class="fundo">
-      <div class="acoes">
-        <div>
-          <ion-icon name="heart-outline"></ion-icon>
-          <ion-icon name="chatbubble-outline"></ion-icon>
-          <ion-icon name="paper-plane-outline"></ion-icon>
-        </div>
-        <div>
-          <ion-icon name="bookmark-outline"></ion-icon>
-        </div>
-      </div>
-
-      <div class="curtidas">
-        <img src={props.likesimg} />
-        <div class="texto">
-          Curtido por <strong>{props.likesname}</strong> e <strong>{props.likesothers}</strong>
-        </div>
-      </div>
-    </div>
-  </div>}</li>)
-};
-
-function Sugere(props)
-{
-  return(
-  <li>{
-    <div class="sugestao">
-    <div class="usuario">
-      <img src={props.pfp} />
-      <div class="texto">
-        <div class="nome">{props.username}</div>
-        <div class="razao">{props.reason}</div>
-      </div>
-    </div>
-
-    <div class="seguir">Seguir</div>
-  </div>}</li>)
-};
-
-function Storia(props)
-{
-  return(
-    <li>{
-      <div class="story">
-          <div class="imagem">
-              <img src = {props.image} />
-          </div>
-          <div class="usuario">
-              {props.name}
-          </div>
-      </div>}</li>
-
-  )
-};
